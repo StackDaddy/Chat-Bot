@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <title>Hello</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles2.css">
+</head>
+
+<body>
+  <div class="main-wrapper">
+      <header>
+          <h2>CHATBOT</h2>
+          <nav>
+              <div class="nav-links">
+                  <ul>
+                      <li><a href="#">Services</a></li>
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="#">About</a></li>
+                  </ul>
+              </div>
+          </nav>
+          <a href="textbox.html" class="contact"><Button>Push To Talk</Button></a>
+      </header>
+  </div>
+    <div class="widget">
+      <input type="text" id="chat-input">
+      <button id="msgBtn" onclick="sendMessage()">Submit</button>
+      <button onclick="clearMessages()">Clear Messages</button>
+      <div class="chat-wrapper"></div>
+    </div>
+</body>
+
+<script>
+  function sendMessage() {
+    const newDiv = document.createElement("div");
+    newDiv.classList.add('chatMsg');
+    let chatInput = document.querySelector('#chat-input').value;
+    const newContent = document.createTextNode(chatInput);
+    newDiv.appendChild(newContent);
+    const widget = document.querySelector(".widget");
+    let chatWrapper = document.querySelector("chat-wrapper");
+    document.querySelector('#chat-input').value = '';
+    if (document.querySelectorAll('.chatMsg').length > 0) {
+      chatWrapper = document.querySelectorAll('.chatMsg')[0];
+    }
+    widget.insertBefore(newDiv, chatWrapper);
+  }
+
+  function clearMessages() {
+    const messages = document.querySelectorAll('.chatMsg');
+    messages.forEach(el => el.remove());
+  }
+</script>
+
+</html>
