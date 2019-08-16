@@ -15,3 +15,5 @@ while True:
                 print(random_response)
         else:
                 print("I did not understand what you said")
+
+#something isn't work
